@@ -13,7 +13,7 @@ def make_soup(url):
 
 source = "https://audiovis.nac.gov.pl/"
 
-soup1 = make_soup(source + "haslo/448/")
+soup1 = make_soup(source + "haslo/448:1/")
 
 for img in soup1.findAll("img"):
     print(img.get('src'))
@@ -27,7 +27,7 @@ for img in soup1.findAll("img"):
 
 
 # Check if value is integer
-def RepresentsInt(s):
+def represents_int(s):
     try:
         int(s)
         return True
@@ -37,9 +37,8 @@ def RepresentsInt(s):
 data = []
 soup = make_soup("https://audiovis.nac.gov.pl/haslo/448:1/")
 for img in soup.findAll("a", attrs={"href":True}):
-    if RepresentsInt(img.text):
+    if represents_int(img.text):
         data.append(img.text)
 
-print(max(data))
 last_site = max(data)
 

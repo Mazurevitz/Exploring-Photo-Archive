@@ -13,11 +13,20 @@ def make_soup(url):
 
 source = "https://audiovis.nac.gov.pl/"
 
-soup1 = make_soup(source + "haslo/448:1/")
+soup1 = make_soup(source + "haslo/190:1/")
 
+i = 1   # numerator
 for img in soup1.findAll("img"):
     print(img.get('src'))
+    temp = img.get('src')
 
+    filename = "woods" + str(i)
+    print(filename)
+    i += 1
+
+    imagefile = open(filename + ".jpeg", 'wb')
+    imagefile.write(urllib.request.urlopen(img).read())
+    imagefile.close()
 
 # soup_list = [make_soup("https://audiovis.nac.gov.pl/obraz/" + str(i) + "/h:448/") for i in range(10)]
 # soup_list_filtered = [soup_list[i].findAll("a", attrs={"opis": True}) for i in range(len(soup_list))]

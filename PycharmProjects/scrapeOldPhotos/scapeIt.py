@@ -25,7 +25,7 @@ for img in soup1.findAll("img"):
     i += 1
 
     imagefile = open(filename + ".jpeg", 'wb')
-    imagefile.write(urllib.request.urlopen(img).read())
+    imagefile.write(urllib.request.urlopen(temp).read())
     imagefile.close()
 
 # soup_list = [make_soup("https://audiovis.nac.gov.pl/obraz/" + str(i) + "/h:448/") for i in range(10)]

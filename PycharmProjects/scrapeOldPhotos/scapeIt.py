@@ -44,7 +44,7 @@ def get_pictures(category: str, name: str):
             imagefile.close()
 
 
-#get_pictures("352:{}", "rivers")
+# get_pictures("352:{}", "rivers")
 
 # soup_list = [make_soup("https://audiovis.nac.gov.pl/obraz/" + str(i) + "/h:448/") for i in range(10)]
 # soup_list_filtered = [soup_list[i].findAll("a", attrs={"opis": True}) for i in range(len(soup_list))]

@@ -62,6 +62,7 @@ def represents_int(s):
         return False
 
 
+# Find last page of given website
 def find_last_page(category: str):
     data = []
     soup = make_soup(source + category.format(1) + "/")

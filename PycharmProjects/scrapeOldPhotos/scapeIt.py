@@ -44,7 +44,7 @@ def get_pictures(category: str, name: str):
             imagefile.close()
 
 
-get_pictures("352:{}", "rivers")
+#get_pictures("352:{}", "rivers")
 
 # soup_list = [make_soup("https://audiovis.nac.gov.pl/obraz/" + str(i) + "/h:448/") for i in range(10)]
 # soup_list_filtered = [soup_list[i].findAll("a", attrs={"opis": True}) for i in range(len(soup_list))]
@@ -61,11 +61,15 @@ def represents_int(s):
     except ValueError:
         return False
 
-data = []
-soup = make_soup("https://audiovis.nac.gov.pl/haslo/448:1/")
-for img in soup.findAll("a", attrs={"href":True}):
-    if represents_int(img.text):
-        data.append(img.text)
 
-last_site = max(data)
+def find_last_page(category: str):
+    data = []
+    soup = make_soup(source + category.format(1) + "/")
+    for img in soup.findAll("a", attrs={"href":True}):
+        if represents_int(img.text):
+            data.append(img.text)
 
+    last_site = max(data)
+    return last_site
+
+print(find_last_page("352:{}"))

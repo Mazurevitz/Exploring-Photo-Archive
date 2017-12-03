@@ -19,7 +19,7 @@ def make_soup(url):
 data = []
 
 i=31
-for i in range(40, 45):
+for i in range(80, 85):
     url = "https://panoramafirm.pl/oprogramowanie_komputerowe/%C5%9Bl%C4%85skie/firmy,{}.html".format(i)
     # url = "https://webcache.googleusercontent.com/search?q=cache:NR39_AkPKasJ:https://panoramafirm.pl/oprogramowanie_komputerowe/%25C5%259Bl%25C4%2585skie+&cd={}&hl=en&ct=clnk&gl=pl".format(i)
     r = requests.get(url)
@@ -36,6 +36,6 @@ print(pure_mails)
 for i, e in enumerate(pure_mails):
     sheet1.write(i, 1, e)
 
-name = "random.xls"
+name = "emaillist7.xls"
 book.save(name)
 book.save(TemporaryFile())

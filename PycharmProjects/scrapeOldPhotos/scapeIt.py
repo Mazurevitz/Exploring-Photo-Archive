@@ -3,6 +3,7 @@ import urllib.request
 import os.path
 import pathlib
 
+
 from bs4 import BeautifulSoup
 
 
@@ -28,7 +29,7 @@ def get_pictures(category: str, name: str):
     # os.makedirs(os.path.dirname(save_path + name), exist_ok=True)
 
     img_num = 1  # file numerator
-    for i in range(1, 2):
+    for i in range(1, 101):
         soup1 = make_soup(source + category.format(i) + "/")
         for img in soup1.findAll("img"):
             print(img.get('src'))
@@ -44,7 +45,10 @@ def get_pictures(category: str, name: str):
             imagefile.close()
 
 
-# get_pictures("352:{}", "rivers")
+get_pictures("352:{}", "rivers")
+get_pictures("16:{}", "architecture")
+get_pictures("190:{}", "woods")
+
 
 # soup_list = [make_soup("https://audiovis.nac.gov.pl/obraz/" + str(i) + "/h:448/") for i in range(10)]
 # soup_list_filtered = [soup_list[i].findAll("a", attrs={"opis": True}) for i in range(len(soup_list))]
@@ -66,7 +70,7 @@ def represents_int(s):
 def find_last_page(category: str):
     data = []
     soup = make_soup(source + category.format(1) + "/")
-    for img in soup.findAll("a", attrs={"href":True}):
+    for img in soup.findAll("a", attrs={"href": True}):
         if represents_int(img.text):
             data.append(img.text)
 
